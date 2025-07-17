@@ -16,14 +16,14 @@ namespace E_Shopper.Catalog.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
             var values = await _categoryService.GetAllCategoryAsync();
             if (values == null || !values.Any()) return NotFound("Hiç bir veri bulunamadı");
             return Ok(values);
         }
-        [HttpGet("getbyid/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -33,7 +33,7 @@ namespace E_Shopper.Catalog.Controllers
             return Ok(values);
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
