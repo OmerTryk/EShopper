@@ -22,17 +22,17 @@ namespace EShopper.Order.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> OrderList()
         {
-           await _mediator.Send(new GetOrderQuery());
-            return Ok();
+            var values = await _mediator.Send(new GetOrderQuery());
+            return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> OrderList(int id)
         {
-            await _mediator.Send(new GetOrderByIdQuery(id));
-            return Ok();
+            var values = await _mediator.Send(new GetOrderByIdQuery(id));
+            return Ok(values);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateOrder(CreateOrderDetailCommand command)
+        public async Task<IActionResult> CreateOrder(CreateOrderCommand command)
         {
             await _mediator.Send(command);
             return Ok("Sipariş başarıyla eklendi");

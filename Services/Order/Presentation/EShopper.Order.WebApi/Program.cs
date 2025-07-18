@@ -2,14 +2,19 @@ using AutoMapper;
 using EShopper.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using EShopper.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using EShopper.Order.Application.Features.Mediator.Commands.OrderCommands;
+using EShopper.Order.Application.Interfaces;
 using EShopper.Order.Application.Mapping.AddressMapping;
 using EShopper.Order.Application.Mapping.OrderDetailMapping;
 using EShopper.Order.Application.Mapping.OrderMapping;
+using EShopper.Order.Presentation.Context;
+using EShopper.Order.Presentation.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddDbContext<OrderContext>();
 builder.Services.AddScoped<GetAddressQueryHandler>();
 builder.Services.AddScoped<GetAddressByIdQueryHandler>();
 builder.Services.AddScoped<CreateAddressCommandHandler>();
@@ -33,11 +38,14 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateOrderCommand).Assembly));
 
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

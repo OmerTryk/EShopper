@@ -10,6 +10,7 @@ namespace EShopper.Order.WebApi.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
+        //TODO: Belki daha sonra mediatr kullanılabilir
         private readonly GetAddressByIdQueryHandler _getAddressByIdQueryHandler;
         private readonly GetAddressQueryHandler _getAddressQueryHandler;
         private readonly CreateAddressCommandHandler _createAddressCommandHandler;
@@ -28,7 +29,7 @@ namespace EShopper.Order.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> AddressList()
         {
-            var values = _getAddressQueryHandler.Handle();
+            var values = await _getAddressQueryHandler.Handle();
             return Ok(values);
         }
 

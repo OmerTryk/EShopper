@@ -7,7 +7,8 @@ namespace EShopper.Order.Presentation.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=OMERTRYK;Database=EShopperOrderDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost,1440;Database=EShopperOrderDb;User Id=sa;Password=Admin123456*;TrustServerCertificate=True;");
+
         }
 
         public DbSet<Domain.Entities.Order> Orders { get; set; }
