@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,19 @@ namespace EShopper.Order.Application.Features.CQRS.Handlers.AddressHandlers
             _repository = repository;
         }
 
-        public async Task Handle(RemoveAddressCommand removeAddressCommand)
+        public async Task Handle(RemoveAddressCommand command)
         {
+            try
+            {
+                var values = await _repository.GetByIdAsync(command.Id);
+                if (values == null) throw new KeyNotFoundException($"Adres bulunamadı. ID: {command.Id}");
+                await _repository.DeleteAsync(values);
+            }
+            catch (Exception ex)
+            {
 
-            var values = await _repository.GetByIdAsync(removeAddressCommand.Id);
-            await _repository.DeleteAsync(values);
+                throw new ApplicationException("Adres bilgileri silinirken bir hata oluştu.", ex);
+            }
         }
 
     }

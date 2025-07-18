@@ -20,8 +20,16 @@ namespace EShopper.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
 
         public async Task Handle(RemoveOrderDetailCommand command)
         {
-            var values = await _repository.GetByIdAsync(command.Id);
-            await _repository.DeleteAsync(values);
+            try
+            {
+                var values = await _repository.GetByIdAsync(command.Id);
+                await _repository.DeleteAsync(values);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Sipariş detaylar silinirken bir hata oluştu.", ex);
+            }
         }
 
     }
