@@ -8,13 +8,19 @@ using EShopper.Order.Application.Mapping.OrderDetailMapping;
 using EShopper.Order.Application.Mapping.OrderMapping;
 using EShopper.Order.Presentation.Context;
 using EShopper.Order.Presentation.Repository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddDbContext<OrderContext>();
+builder.Services.AddDbContext<OrderContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
 builder.Services.AddScoped<GetAddressQueryHandler>();
 builder.Services.AddScoped<GetAddressByIdQueryHandler>();
 builder.Services.AddScoped<CreateAddressCommandHandler>();
