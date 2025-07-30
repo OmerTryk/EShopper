@@ -19,9 +19,9 @@ namespace EShopper.Discount.Services
         public async Task<bool> CreateCouponAsync(CreateCouponDto createCouponDto)
         {
             string query = "insert into Coupons(CouponCode,Rate,IsActive,ValidDate) values(@CouponCode, @Rate, @IsActive, @ValidDate)";
-            // var parametres = new DynamicParameters();
             try
             {
+                // var parametres = new DynamicParameters();
                 //Eğer dto içindeki parametre adları ve sql sorgusundaki parametre adları eşleşiyorsa parametre eklemeye gerek duyulmaz
                 //parametres.Add("@code",createCouponDto.CouponCode);
                 //parametres.Add("@rate", createCouponDto.Rate);

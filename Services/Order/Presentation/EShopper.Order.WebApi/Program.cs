@@ -6,8 +6,10 @@ using EShopper.Order.Application.Interfaces;
 using EShopper.Order.Application.Mapping.AddressMapping;
 using EShopper.Order.Application.Mapping.OrderDetailMapping;
 using EShopper.Order.Application.Mapping.OrderMapping;
+using EShopper.Order.Domain.Entities;
 using EShopper.Order.Presentation.Context;
 using EShopper.Order.Presentation.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +34,20 @@ builder.Services.AddScoped<GetOrderDetailByIdQueryHandler>();
 builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = builder.Configuration["IdentityServerUrl"];
+    options.Audience = "ResourceOrder";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("OrderFullAccess",policy =>
+    {
+        policy.RequireClaim("scope","OrderFullPermisson");
+    });
+});
 
 var mapperConfig = new MapperConfiguration(cfg =>
 {

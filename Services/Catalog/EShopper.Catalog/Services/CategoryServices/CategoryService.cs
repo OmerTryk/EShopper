@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using E_Shopper.Catalog.Dtos.CatagoryDtos;
 using E_Shopper.Catalog.Dtos.CategoryDtos;
-using E_Shopper.Catalog.Dtos.ProductDetailDtos;
 using E_Shopper.Catalog.Settings;
 using EShopper.Catalog.Entities;
 using MongoDB.Driver;

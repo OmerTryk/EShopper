@@ -1,11 +1,12 @@
 ﻿using EShopper.Order.Application.Features.CQRS.Commands.AddressCommands;
 using EShopper.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using EShopper.Order.Application.Features.CQRS.Queries.AddressQueries;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShopper.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressController : ControllerBase

@@ -1,9 +1,11 @@
 ﻿using E_Shopper.Catalog.Dtos.ProductDetailDtos;
 using E_Shopper.Catalog.Services.ProductServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Shopper.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase

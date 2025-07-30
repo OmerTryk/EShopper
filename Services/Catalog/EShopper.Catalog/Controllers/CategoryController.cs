@@ -1,10 +1,12 @@
 ﻿using E_Shopper.Catalog.Dtos.CategoryDtos;
 using E_Shopper.Catalog.Services.CategoryServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Shopper.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : Controller
@@ -16,6 +18,7 @@ namespace E_Shopper.Catalog.Controllers
             _categoryService = categoryService;
         }
 
+        [Authorize(Policy = "CatalogReadAccess")]
         [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
@@ -23,6 +26,8 @@ namespace E_Shopper.Catalog.Controllers
             if (values == null || !values.Any()) return NotFound("Hiç bir veri bulunamadı");
             return Ok(values);
         }
+
+        [Authorize(Policy = "CatalogFullAccess")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {

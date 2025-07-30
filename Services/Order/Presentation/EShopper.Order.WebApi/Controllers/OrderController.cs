@@ -1,13 +1,12 @@
-﻿using EShopper.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
-using EShopper.Order.Application.Features.Mediator.Commands.OrderCommands;
-using EShopper.Order.Application.Features.Mediator.Handlers.OrderHandlers;
+﻿using EShopper.Order.Application.Features.Mediator.Commands.OrderCommands;
 using EShopper.Order.Application.Features.Mediator.Queries.OrderQueries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShopper.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
