@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Shopper.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -17,14 +17,14 @@ namespace E_Shopper.Catalog.Controllers
             _productService = productService;
         }
 
-        [HttpGet("getall")]
+        [HttpGet]
         public async Task<IActionResult> ProductList()
         {
             var values = await _productService.GetAllProductAsync();
             if (values == null || !values.Any()) return NotFound("Hiç bir veri bulunamadı");
             return Ok(values);
         }
-        [HttpGet("getbyid/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -34,7 +34,7 @@ namespace E_Shopper.Catalog.Controllers
             return Ok(values);
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             if (string.IsNullOrWhiteSpace(id))

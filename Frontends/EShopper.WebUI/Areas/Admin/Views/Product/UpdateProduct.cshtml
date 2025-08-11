@@ -1,0 +1,46 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Ürün Güncelle</h6>
+			</div>
+			<div class="card-body px-4 pt-4 pb-2">
+				<form method="post">
+					<input type="hidden" class="form-control" asp-for="ProductId" />
+					<div class="mb-3">
+						<label class="form-label">Ürün Adı</label>
+						<input type="text" class="form-control" asp-for="ProductName" placeholder="Ürün adı giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Ürün Fiyatı</label>
+						<input type="number" step="0.01" class="form-control" asp-for="ProductPrice" placeholder="Ürün fiyatı giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Ürün Açıklaması</label>
+						<input type="text" class="form-control" asp-for="ProductDescription" placeholder="Ürün açıklaması giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Kategori</label>
+						<select class="form-select" asp-for="CategoryId" asp-items="ViewBag.Categories" required>
+							<option value="">Kategori Seçiniz</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Ürün Fotoğraf URL</label>
+						<input type="text" class="form-control" asp-for="ProductImages" placeholder="Ürün fotoğraf URL giriniz" required />
+					</div>
+					<button type="submit" class="btn bg-gradient-dark mb-0">
+						<i class="fas fa-save me-2"></i> Ürün Güncelle
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

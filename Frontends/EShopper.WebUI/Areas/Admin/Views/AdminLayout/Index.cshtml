@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial");
+
+<body class="g-sidenav-show  bg-gray-100">
+
+	@await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
+	<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+		@await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
+
+		@RenderBody()
+
+		@await Component.InvokeAsync("_AdminLayoutFixedPluginComponentPartial")
+
+	</main>
+
+	@await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
+</body>
+
+</html>

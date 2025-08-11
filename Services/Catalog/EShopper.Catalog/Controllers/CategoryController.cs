@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Shopper.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : Controller

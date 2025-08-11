@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "ProductDetails";
+	ViewData["PageName"] = "Product Details";
+	Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+<div class="container-fluid py-5">
+	<div class="row px-xl-5">
+		@await Component.InvokeAsync("_ProductCarouselProductDetailsComponentPartial")
+
+		@await Component.InvokeAsync("_ProductFeatureProductDetailComponentPartial")
+	</div>
+	<div class="row px-xl-5">
+		<div class="col">
+			@await Component.InvokeAsync("_TabPaneProductDetailsComponentPartial")
+			<div class="tab-content">
+				@await Component.InvokeAsync("_ProductDescriptionProductDetailComponentPartial")
+				@await Component.InvokeAsync("_ProductInformationProductDetailComponentPartial")
+				@await Component.InvokeAsync("_ProductReviewProductDetailsComponentPartial")
+			</div>
+		</div>
+	</div>
+</div>
