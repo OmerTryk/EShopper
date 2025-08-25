@@ -57,5 +57,14 @@ namespace E_Shopper.Catalog.Controllers
             await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
             return Ok("Kategori başarıyla güncellendi");
         }
+        [HttpGet("getproductdetailbyproductid/{id}")]
+        public async Task<IActionResult> GetByProductDetailProductIdAsync(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                return BadRequest("ID boş olamaz.");
+            var values = await _productDetailService.GetProductDetailByProductIdAsync(id);
+            if (values == null) return NotFound($"ID '{id}' ile eşleşen ürün detayı bulunamadı.");
+            return Ok(values);
+        }
     }
 }

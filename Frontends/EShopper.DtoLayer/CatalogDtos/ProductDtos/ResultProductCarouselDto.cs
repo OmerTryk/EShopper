@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EShopper.DtoLayer.CatalogDtos.ProductDtos
 {
-    public class ProductImage
+    public class ResultProductCarouselDto
     {
-        public string ProductImageUrl { get; set; }
-        public string ProductImageDescription { get; set; }
+        public List<ProductImageDto> ProductImages { get; set; }
     }
 }

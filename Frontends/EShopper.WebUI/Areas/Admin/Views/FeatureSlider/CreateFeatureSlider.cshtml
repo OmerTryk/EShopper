@@ -1,0 +1,31 @@
+﻿@model CreateFeatureDto
+@{
+	ViewData["Title"] = "CreateFeature";
+	ViewData["NavbarTitle"] = "Öne Çıkan Slayt Ekle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Yeni Öne Çıkan Ekle</h6>
+			</div>
+			<div class="card-body px-4 pt-4 pb-2">
+				<form method="post">
+					<div class="mb-3">
+						<label class="form-label">Başlık</label>
+						<input type="text" class="form-control" asp-for="Title" placeholder="Öne çıkan ürün başlığı giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Link</label>
+						<input type="text" class="form-control" asp-for="IconUrl" placeholder="Öne çıkan ürün linki giriniz" required />
+					</div>
+					<button type="submit" class="btn bg-gradient-dark mb-0">Ekle</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
+    ViewData["NavbarTitle"] = "Ürünler";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
@@ -20,6 +21,7 @@
                                     <th class="text-center text-uppercase align-middle text-center text-secondary font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ürün Adı</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ürün Fiyatı</th>
+                                    <th class="text-secondary opacity-7"></th>
                                     <th class="text-secondary opacity-7"></th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
@@ -66,6 +68,13 @@
                                                    class="text-secondary font-weight-bold text-xs"
                                                    data-toggle="tooltip" title="Güncelle">
                                                     Güncelle
+                                                </a>
+                                            </td>
+                                            <td class="align-middle text-secondary opacity-7 ps-2">
+                                                <a href="/Admin/ProductDetail/Index/@item.ProductId"
+                                                   class="text-secondary font-weight-bold text-xs"
+                                                   data-toggle="tooltip" title="Detay">
+                                                    Detay Görüntüle
                                                 </a>
                                             </td>
                                         </tr>

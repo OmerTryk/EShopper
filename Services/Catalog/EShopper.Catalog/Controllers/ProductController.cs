@@ -59,5 +59,14 @@ namespace E_Shopper.Catalog.Controllers
             await _productService.UpdateProductAsync(updateProductDto);
             return Ok("Kategori başarıyla güncellendi");
         }
+
+        [HttpGet("getproductwithcategory/{id}")]
+        public async Task<IActionResult> GetProductWithCategory(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                return BadRequest("ID boş olamaz.");
+            var values = await _productService.GetProductWithCategory(id);
+            return Ok(values);
+        }
     }
 }

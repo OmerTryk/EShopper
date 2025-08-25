@@ -5,17 +5,24 @@
 }
 <div class="container-fluid py-5">
 	<div class="row px-xl-5">
-		@await Component.InvokeAsync("_ProductCarouselProductDetailsComponentPartial")
+		@await Component.InvokeAsync("_ProductCarouselProductDetailsComponentPartial", new { id = ViewBag.ProductId })
 
-		@await Component.InvokeAsync("_ProductFeatureProductDetailComponentPartial")
+		@await Component.InvokeAsync("_ProductFeatureProductDetailComponentPartial", new { id = ViewBag.ProductId })
 	</div>
 	<div class="row px-xl-5">
 		<div class="col">
 			@await Component.InvokeAsync("_TabPaneProductDetailsComponentPartial")
 			<div class="tab-content">
-				@await Component.InvokeAsync("_ProductDescriptionProductDetailComponentPartial")
-				@await Component.InvokeAsync("_ProductInformationProductDetailComponentPartial")
-				@await Component.InvokeAsync("_ProductReviewProductDetailsComponentPartial")
+				@await Component.InvokeAsync("_ProductDescriptionProductDetailComponentPartial", new { id = ViewBag.ProductId })
+				@await Component.InvokeAsync("_ProductInformationProductDetailComponentPartial", new { id = ViewBag.ProductId })
+
+				<div class="tab-pane fade" id="tab-pane-3">
+					<div class="row">
+				@await Component.InvokeAsync("_ProductReviewProductDetailsComponentPartial", new { id = ViewBag.ProductId })
+				@await Component.InvokeAsync("_ProductSendCommentComponentPartial", new { id = ViewBag.ProductId })
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,35 @@
+﻿@using E_Shopper.Catalog.Dtos.OfferDtos
+@model UpdateOfferDto
+@{
+	ViewData["Title"] = "UpdateOffer"; 
+	ViewData["NavbarTitle"] = "Teklif Güncelle";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Offer Güncelle</h6>
+			</div>
+			<div class="card-body px-4 pt-4 pb-2">
+				<form method="post">
+					<input type="hidden" class="form-control" asp-for="OfferId" />
+					<div class="mb-3">
+						<label class="form-label">Başlık</label>
+						<input type="text" class="form-control" asp-for="Title" placeholder="Teklif başlığı giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Başlık</label>
+						<input type="text" class="form-control" asp-for="SubTitle" placeholder="Teklif alt başlığı giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Link</label>
+						<input type="text" class="form-control" asp-for="ImageUrl" placeholder="Teklif resim linki giriniz" required />
+					</div>
+					<button type="submit" class="btn bg-gradient-dark mb-0">Güncelle</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

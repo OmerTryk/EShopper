@@ -1,0 +1,61 @@
+﻿@model CreateCommentDto
+@{
+    ViewData["Title"] = "CreateComment";
+    ViewData["NavbarTitle"] = "Yorum Ekle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>Yeni Yorum Ekle</h6>
+            </div>
+            <div class="card-body px-4 pt-4 pb-2">
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Adı Soyadı</label>
+                        <input type="text" class="form-control" asp-for="NameSurname" placeholder="Adı Soyadı giriniz" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Yorum Detayı</label>
+                        <textarea class="form-control" asp-for="CommentDetail" placeholder="Yorumunuzu giriniz" rows="3" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Email adresinizi giriniz" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Resim Linki</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" placeholder="Profil resim linki giriniz" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Ürün</label>
+                        <select class="form-select" asp-for="ProductId" asp-items="ViewBag.Product" required>
+                            <option value="">Ürün Seçiniz</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Durum</label>
+                        <select class="form-control" asp-for="Status" required>
+                            <option value="true">Aktif</option>
+                            <option value="false">Pasif</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Rating</label>
+                        <input type="number" class="form-control" asp-for="Rating" placeholder="Puan (1-5)" min="1" max="5" required />
+                    </div>
+
+                    <button type="submit" class="btn bg-gradient-dark mb-0">Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

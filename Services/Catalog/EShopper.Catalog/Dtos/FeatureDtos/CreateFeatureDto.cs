@@ -1,0 +1,8 @@
+﻿namespace E_Shopper.Catalog.Dtos.FeatureDtos
+{
+    public class CreateFeatureDto
+    {
+        public string Title { get; set; }
+        public string IconUrl { get; set; }
+    }
+}

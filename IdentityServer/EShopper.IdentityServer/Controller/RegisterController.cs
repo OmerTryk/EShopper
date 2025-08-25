@@ -9,7 +9,7 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace EShopper.IdentityServer.Controller
 {
-    [Authorize(LocalApi.PolicyName)]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegisterController : ControllerBase

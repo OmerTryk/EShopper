@@ -1,9 +1,15 @@
 using System.Reflection;
 using AutoMapper;
 using E_Shopper.Catalog.Mapping;
+using E_Shopper.Catalog.Services.AboutServices;
 using E_Shopper.Catalog.Services.CategoryServices;
+using E_Shopper.Catalog.Services.ContactServices;
+using E_Shopper.Catalog.Services.FeatureServices;
+using E_Shopper.Catalog.Services.FeaturesSliderServices;
+using E_Shopper.Catalog.Services.OfferServices;
 using E_Shopper.Catalog.Services.ProductDetailServices;
 using E_Shopper.Catalog.Services.ProductServices;
+using E_Shopper.Catalog.Services.VendorBrandServices;
 using E_Shopper.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -37,6 +43,12 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
+builder.Services.AddScoped<IOfferService, OfferService>();
+builder.Services.AddScoped<IVendorBrandService, VendorBrandService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IDatabaseSettings>(sp =>
 {
     return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;

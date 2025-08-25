@@ -48,7 +48,15 @@ namespace EShopper.WebUI.Areas.Admin.Controllers
                                                      }).ToList();
                 ViewBag.Categories = categoryItem;
             }
-            return View();
+
+            var model = new CreateProductDto
+            {
+                ProductImages = new List<ProductImageDto>
+        {
+            new ProductImageDto()
+        }
+            };
+            return View(model);
         }
         [HttpPost]
         [Route("CreateProduct")]
@@ -98,6 +106,13 @@ namespace EShopper.WebUI.Areas.Admin.Controllers
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<UpdateProductDto>(content);
+                if (values.ProductImages == null)
+                {
+                    values.ProductImages = new List<ProductImageDto>
+            {
+                new ProductImageDto()
+            };
+                }
                 return View(values);
             }
             return View();
@@ -113,6 +128,21 @@ namespace EShopper.WebUI.Areas.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Product", new { area = "Admin" });
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [Route("GetProductWithCategory/{id}")]
+        public async Task<IActionResult> GetProductWithCategory(string id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"https://localhost:7020/api/Product/getproductwithcategory/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(content);
+                return View(values);
             }
             return View();
         }

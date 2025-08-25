@@ -17,7 +17,7 @@
 		@await Component.InvokeAsync("_AdminLayoutFixedPluginComponentPartial")
 
 	</main>
-
+	@RenderSection("Scripts", required: false)
 	@await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
 </body>
 

@@ -1,0 +1,87 @@
+﻿@model ResultProductDetailByProductId
+@{
+    ViewData["Title"] = "Index";
+    ViewData["NavbarTitle"] = "Footer Hakkımda";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Ürün Detay</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center text-uppercase align-middle text-center text-secondary font-weight-bolder opacity-7">#</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Açıklama</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bilgilendirme</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                        count++;
+                                        <tr>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">@count</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Model.ProductDescription.Substring(0,40)...</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">@Model.ProductInformation.Substring(0, 40)...</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-secondary opacity-7 ps-2">
+                                            <a href="/Admin/ProductDetail/DeleteProductDetail/@Model.ProductDetailId"
+                                                   class="text-secondary font-weight-bold text-xs"
+                                                   data-toggle="tooltip" title="Sil">
+                                                    Sil
+                                                </a>
+                                            </td>
+                                            <td class="align-middle text-secondary opacity-7 ps-2">
+                                            <a href="/Admin/ProductDetail/UpdateProductDetail/@Model.ProductDetailId"
+                                                   class="text-secondary font-weight-bold text-xs"
+                                                   data-toggle="tooltip" title="Güncelle">
+                                                    Güncelle
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5" class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-danger">Veri Bulunamadı</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="ms-3 mt-3">
+                        <a href="/Admin/ProductDetail/CreateProductDetail" class="btn bg-gradient-dark mb-0">
+                            Yeni Ürün Detay Ekle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 ﻿@model CreateCategoryDto
 @{
 	ViewData["Title"] = "CreateCategory";
+	ViewData["NavbarTitle"] = "Kategori Ekle";
 	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
@@ -15,6 +16,9 @@
 					<div class="mb-3">
 						<label class="form-label">Kategori Adı</label>
 						<input type="text" class="form-control" asp-for="CategoryName" placeholder="Kategori adı giriniz" required />
+					</div><div class="mb-3">
+						<label class="form-label">Kategori Resim Url</label>
+						<input type="text" class="form-control" asp-for="ImageUrl" placeholder="Kategori resim url giriniz" required />
 					</div>
 					<button type="submit" class="btn bg-gradient-dark mb-0">Kategori Ekle</button>
 				</form>

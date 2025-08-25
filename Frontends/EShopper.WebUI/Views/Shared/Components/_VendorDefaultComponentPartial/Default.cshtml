@@ -1,22 +1,14 @@
-﻿<div class="container-fluid py-5">
+﻿@model List<ResultVendorBrandDto>
+<div class="container-fluid py-5">
 	<div class="row px-xl-5">
 		<div class="col">
 			<div class="owl-carousel vendor-carousel">
-				<div class="vendor-item border p-4">
-					<img src="/eshopper-1.0.0/img/nike.jpg" alt="">
-				</div>
-				<div class="vendor-item border p-4">
-					<img src="/eshopper-1.0.0/img/gucci.png" alt="">
-				</div>
-				<div class="vendor-item border p-4">
-					<img src="/eshopper-1.0.0/img/chanel.png" alt="">
-				</div>
-				<div class="vendor-item border p-4">
-					<img src="/eshopper-1.0.0//img/vendor-4.jpg" alt="">
-				</div>
-				<div class="vendor-item border p-4">
-					<img src="/eshopper-1.0.0//img/louisvuitton.png" alt="">
-				</div>
+				@foreach (var item in Model)
+				{
+					<div class="vendor-item border p-4">
+						<img src="@item.ImageUrl" alt="">
+					</div>
+				}
 			</div>
 		</div>
 	</div>

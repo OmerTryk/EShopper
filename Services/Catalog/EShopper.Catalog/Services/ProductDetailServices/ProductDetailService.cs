@@ -98,6 +98,24 @@ namespace E_Shopper.Catalog.Services.ProductDetailServices
             }
         }
 
+        public async Task<ResultProductDetailByProductId> GetProductDetailByProductIdAsync(string id)
+        {
+            try
+            {
+                var values = await _mongoCollection.Find(pd => pd.ProductId == id).FirstOrDefaultAsync();
+                if (values == null)
+                    throw new KeyNotFoundException($"'{id}' değerine sahip bir ürün detayı bulunamadı.");
+                var result = _mapper.Map<ResultProductDetailByProductId>(values);
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[GetByProductDetailByProductIdAsync] Hata {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
         {
             try

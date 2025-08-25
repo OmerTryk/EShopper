@@ -1,6 +1,7 @@
 ﻿@model List<ResultCategoryDto>
 @{
     ViewData["Title"] = "Index";
+    ViewData["NavbarTitle"] = "Kategori";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
@@ -20,6 +21,7 @@
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori Adı</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori Resim Url</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategoriye Ait Ürünler</th>
                                     <th class="text-secondary opacity-7"></th>
                                     <th class="text-secondary opacity-7"></th>
@@ -39,19 +41,20 @@
 
                                             <td>
                                                 <div class="d-flex px-2 py-1">
-                                                    <div>
-                                                        <img src="~/soft-ui-dashboard-main/assets/img/team-2.jpg"
-                                                             class="avatar avatar-sm me-3"
-                                                             alt="category">
-                                                    </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">@item.CategoryName</h6>
                                                     </div>
                                                 </div>
                                             </td>
-
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@item.ImageUrl</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td class="align-middle">
-                                                <a href="javascript:;"
+                                                <a href="/Admin/Product/GetProductWithCategory/@item.CategoryId"
                                                    class="text-secondary font-weight-bold text-xs"
                                                    data-toggle="tooltip"
                                                    title="Ürünlere Git">
@@ -92,7 +95,7 @@
                             </tbody>
                         </table>
                         <div class="ms-3 mt-3">
-                            <a href="/Admin/Product/CreateProduct" class="btn bg-gradient-dark mb-0">
+                            <a href="/Admin/Category/CreateCategory" class="btn bg-gradient-dark mb-0">
                                 Yeni Kategori Ekle
                             </a>
                         </div>

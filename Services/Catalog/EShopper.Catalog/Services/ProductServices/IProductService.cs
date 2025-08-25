@@ -1,4 +1,5 @@
 ﻿using E_Shopper.Catalog.Dtos.ProductDetailDtos;
+using E_Shopper.Catalog.Dtos.ProductDtos;
 
 namespace E_Shopper.Catalog.Services.ProductServices
 {
@@ -9,5 +10,6 @@ namespace E_Shopper.Catalog.Services.ProductServices
         Task CreateProductAsync(CreateProductDto createProductDto);
         Task UpdateProductAsync(UpdateProductDto updateProductDto);
         Task DeleteProductAsync(string id);
+        Task<List<ResultProductWithCategoryDto>> GetProductWithCategory(string id);
     }
 }

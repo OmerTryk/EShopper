@@ -10,7 +10,7 @@ namespace EShopper.DtoLayer.CatalogDtos.ProductDtos
     {
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
-        public List<ProductImage> ProductImages { get; set; }
+        public List<ProductImageDto> ProductImages { get; set; } = new List<ProductImageDto>();
         public string ProductDescription { get; set; }
         public string CategoryId { get; set; }
     }

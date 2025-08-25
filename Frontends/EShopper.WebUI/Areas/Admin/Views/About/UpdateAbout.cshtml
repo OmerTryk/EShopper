@@ -1,0 +1,38 @@
+﻿@model UpdateAboutDto
+@{
+	ViewData["Title"] = "UpdateAbout";
+	ViewData["NavbarTitle"] = "Teklif Güncelle";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header pb-0">
+				<h6>Hakkımda Güncelle</h6>
+			</div>
+			<div class="card-body px-4 pt-4 pb-2">
+				<form method="post">
+					<input type="hidden" class="form-control" asp-for="AboutId" />
+					<div class="mb-3">
+						<label class="form-label">Açıklama</label>
+						<input type="text" class="form-control" asp-for="Description" placeholder="Açıklama giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Adres</label>
+						<input type="text" class="form-control" asp-for="Address" placeholder="Adres giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Telefon</label>
+						<input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Telefon numarası giriniz" required />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Email</label>
+						<input type="text" class="form-control" asp-for="Email" placeholder="Email adresi giriniz" required />
+					</div>
+					<button type="submit" class="btn bg-gradient-dark mb-0">Güncelle</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
