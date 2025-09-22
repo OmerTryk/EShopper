@@ -1,6 +1,5 @@
-﻿using E_Shopper.Catalog.Dtos.FeatureSliderDtos;
+﻿using EShopper.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
 namespace EShopper.WebUI.Areas.Admin.Controllers

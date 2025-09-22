@@ -1,4 +1,4 @@
-﻿namespace E_Shopper.Catalog.Dtos.OfferDtos
+﻿namespace EShopper.DtoLayer.CatalogDtos.OfferDtos
 {
     public class UpdateOfferDto
     {

@@ -1,0 +1,98 @@
+{
+    "Routes": [
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/catalog/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7020
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/discount/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7172
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/order/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7251
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/cargo/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7108
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/basket/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7172
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/comment/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7250
+                }
+            ]
+        },
+        {
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+            "UpstreamPathTemplate": "/services/message/{everything}",
+            "UpstreamScheme": "https",
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7031
+                }
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:7241"
+    }
+}

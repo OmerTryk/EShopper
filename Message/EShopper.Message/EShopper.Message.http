@@ -1,0 +1,6 @@
+@EShopper.Message_HostAddress = http://localhost:5122
+
+GET {{EShopper.Message_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -14,14 +14,14 @@ namespace EShopper.IdentityServer.Tools
             if (!string.IsNullOrWhiteSpace(model.Role))
                 claims.Add(new Claim(ClaimTypes.Role, model.Role));
 
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Id));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()));
             if (!string.IsNullOrWhiteSpace(model.UserName))
             {
                 claims.Add(new Claim("UserName", model.UserName));
             }
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expaireTime = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
+            var expaireTime = DateTime.UtcNow.AddMinutes(JwtTokenDefaults.Expire);
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
                 issuer: JwtTokenDefaults.ValidIssuer,
                 audience: JwtTokenDefaults.ValidAudience,

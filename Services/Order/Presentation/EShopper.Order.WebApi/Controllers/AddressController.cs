@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EShopper.Order.WebApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressController : ControllerBase

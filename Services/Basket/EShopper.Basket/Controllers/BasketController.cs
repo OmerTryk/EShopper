@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EShopper.Basket.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class BasketController : ControllerBase

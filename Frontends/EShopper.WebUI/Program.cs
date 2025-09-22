@@ -1,26 +1,12 @@
-using EShopper.WebUI.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using EShopper.WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, options =>
-{
-    options.LoginPath = "/Login/Index/";
-    options.LogoutPath = "/Login/Logout/";
-    options.AccessDeniedPath = "/Pages/AccessDenied/";
-    options.Cookie.SameSite = SameSiteMode.Strict;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-    options.Cookie.Name = "JwtEShopper";
-});
-
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.AddScoped<ILoginService,LoginService>();
-
+// Servisleri ayrý class’tan çaðýrýyoruz
+builder.Services.AddEShopperServices(builder.Configuration);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -32,8 +18,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+app.UseSession();
 
 app.MapStaticAssets();
 
@@ -43,6 +30,6 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

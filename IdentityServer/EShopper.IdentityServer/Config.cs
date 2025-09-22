@@ -17,6 +17,9 @@ namespace EShopper.IdentityServer
             new ApiResource("ResourceOrder"){Scopes={ "OrderFullPermission"}},
             new ApiResource("CargoResource"){Scopes={"CargoFullPermission"}},
             new ApiResource("ResourceBasket"){Scopes={"BasketFullPermission"}},
+            new ApiResource("ResourceOcelot"){Scopes={"OcelotFullPermission"}},
+            new ApiResource("ResourceComment"){Scopes={"CommentFullPermission"}},
+            new ApiResource("ResourceIdentity"){Scopes={"IdentityFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -35,6 +38,8 @@ namespace EShopper.IdentityServer
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
             new ApiScope("CargoFullPermission","Full authority for cargo operations"),
             new ApiScope("BasketFullPermission","Full authority for basket operations"),
+            new ApiScope("OcelotFullPermission","Full authority for ocelot operations"),
+            new ApiScope("CommentFullPermission","Full authority for comment operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -47,7 +52,7 @@ namespace EShopper.IdentityServer
                 ClientName = "EShopper Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("eshoppersecret".Sha256())},
-                AllowedScopes={"CatalogReadPermission"}
+                AllowedScopes={"CatalogReadPermission", "OcelotFullPermission" }
             },
             //Manager
             new Client
@@ -56,7 +61,7 @@ namespace EShopper.IdentityServer
                 ClientName = "EShopper Manager User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("eshoppersecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission" }
             },
 
             //Admin
@@ -66,7 +71,7 @@ namespace EShopper.IdentityServer
                 ClientName = "EShopper Admin User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("eshoppersecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OrderFullPermission", "DiscountFullPermission","CargoFullPermission" ,"BasketFullPermission",
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OrderFullPermission", "DiscountFullPermission","CargoFullPermission" ,"BasketFullPermission","OcelotFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Email,

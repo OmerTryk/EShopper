@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EShopper.WebUI.Services.BasketService;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EShopper.WebUI.ViewComponents.ShopCartViewComponent
 {
     public class _ProductListShoppingCartComponentPartial : ViewComponent
-    {
-        public IViewComponentResult Invoke()
+    { 
+        private readonly IBasketService _basketService;
+
+        public _ProductListShoppingCartComponentPartial(IBasketService basketService)
         {
-            return View();
+            _basketService = basketService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _basketService.GetBasket();
+            return View(values);
         }
     }
 }

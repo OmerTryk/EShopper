@@ -1,0 +1,41 @@
+﻿@model List<EShopper.DtoLayer.MessageDtos.ResultInboxMessageDto>
+@{
+    ViewData["Title"] = "Gelen Kutusu";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3 class="mb-3">📥 Gelen Kutusu</h3>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Kimden</th>
+                    <th>Konu</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var msg in Model)
+                {
+                    <tr>
+                        <td>@msg.SenderId</td>
+                        <td>@msg.Subject</td>
+                        <td>@msg.MessageDate.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            @if (msg.IsRead)
+                            {
+                                <span class="badge bg-success">Okundu</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Okunmadı</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

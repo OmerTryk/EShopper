@@ -35,19 +35,19 @@ builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-{
-    options.Authority = builder.Configuration["IdentityServerUrl"];
-    options.Audience = "ResourceOrder";
-});
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+//{
+//    options.Authority = builder.Configuration["IdentityServerUrl"];
+//    options.Audience = "ResourceOrder";
+//});
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("OrderFullAccess",policy =>
-    {
-        policy.RequireClaim("scope","OrderFullPermisson");
-    });
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("OrderFullAccess",policy =>
+//    {
+//        policy.RequireClaim("scope","OrderFullPermisson");
+//    });
+//});
 
 var mapperConfig = new MapperConfiguration(cfg =>
 {

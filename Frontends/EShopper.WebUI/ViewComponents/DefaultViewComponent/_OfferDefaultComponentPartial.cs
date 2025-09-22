@@ -1,4 +1,4 @@
-﻿using E_Shopper.Catalog.Dtos.OfferDtos;
+﻿using EShopper.DtoLayer.CatalogDtos.OfferDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

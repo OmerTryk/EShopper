@@ -17,7 +17,6 @@ namespace E_Shopper.Catalog.Controllers
         {
             _categoryService = categoryService;
         }
-
         [Authorize(Policy = "CatalogReadAccess")]
         [HttpGet]
         public async Task<IActionResult> CategoryList()
@@ -27,7 +26,7 @@ namespace E_Shopper.Catalog.Controllers
             return Ok(values);
         }
 
-        [Authorize(Policy = "CatalogFullAccess")]
+        [Authorize(Policy = "CatalogReadAccess")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {

@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using E_Shopper.Catalog.Dtos.FeatureSliderDtos;
+﻿using EShopper.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

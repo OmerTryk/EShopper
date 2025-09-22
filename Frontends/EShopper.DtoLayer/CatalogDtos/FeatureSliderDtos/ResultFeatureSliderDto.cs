@@ -1,4 +1,4 @@
-﻿namespace E_Shopper.Catalog.Dtos.FeatureSliderDtos
+﻿namespace EShopper.DtoLayer.CatalogDtos.FeatureSliderDtos
 {
     public class ResultFeatureSliderDto
     {

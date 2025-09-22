@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using EShopper.DtoLayer.IdentityDtos.LoginDtos;
 using EShopper.WebUI.Models;
+using EShopper.WebUI.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ namespace EShopper.WebUI.Controllers
             var jsonData = JsonConvert.SerializeObject(userLoginDto);
             var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync("https://localhost:5001/api/Login", content);
+
             if (response.IsSuccessStatusCode)
             {
                 var responseData = await response.Content.ReadAsStringAsync();
@@ -38,11 +40,15 @@ namespace EShopper.WebUI.Controllers
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });
-                if (token == null || string.IsNullOrEmpty(token.Token))
+
+                if (token != null && !string.IsNullOrEmpty(token.Token))
                 {
                     JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
                     var jwtToken = tokenHandler.ReadJwtToken(token.Token);
                     var claims = jwtToken.Claims.ToList();
+
+                    var userId = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+
                     if (token.Token != null)
                     {
                         claims.Add(new Claim("eshopper", token.Token));
@@ -52,13 +58,15 @@ namespace EShopper.WebUI.Controllers
                             ExpiresUtc = token.ExpireDate,
                             IsPersistent = true,
                         };
+
                         await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        return RedirectToAction("Index", "Default");
+
+                        return RedirectToAction("Index", "User");
                     }
                 }
             }
-                ViewBag.ErrorMessage = "Kullanıcı Adı veya Şifre Yanlış";
-                return View();
+            ViewBag.ErrorMessage = "Kullanıcı Adı veya Şifre Yanlış";
+            return View();
         }
     }
 }
